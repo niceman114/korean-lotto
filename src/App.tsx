@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Balls from './components/Balls'; // 새로운 Balls 컴포넌트 import
+import Balls from './components/Balls';
 
 const generateRandomNumbers = (): number[] => {
   const numbers = new Set<number>();
@@ -12,22 +12,22 @@ const generateRandomNumbers = (): number[] => {
 };
 
 const App: React.FC = () => {
-  const [numbers, setNumbers] = useState<number[]>(generateRandomNumbers());
-  const [animationKey, setAnimationKey] = useState<number>(0);
+  const [numbersList, setNumbersList] = useState<number[][]>([generateRandomNumbers()]);
 
-  const onRetryButtonClicked = () => {
-    setNumbers(generateRandomNumbers());
-    setAnimationKey(prevKey => prevKey + 1);
+  const onClickAddButton = () => {
+    setNumbersList(prevNumbersList => [...prevNumbersList, generateRandomNumbers()]);
   };
 
   return (
       <div className="App">
         <header className="App-header">
-          <h1>로또 번호 나와라!</h1>
+          <h1>대충 로또 생성기</h1>
+          <button onClick={onClickAddButton}>더 나와라!</button>
         </header>
         <main>
-          <Balls numbers={numbers} animationKey={animationKey} />
-          <button onClick={onRetryButtonClicked}>다시!</button>
+          {numbersList.map((numbers, index) => (
+              <Balls key={index} numbers={numbers} animationKey={index} />
+          ))}
         </main>
       </div>
   );
