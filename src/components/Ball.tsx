@@ -19,8 +19,8 @@ const Ball: React.FC<BallProps> = ({ number, index }) => {
     return (
         <motion.div
             className={`ball type${ballType}`}
-            initial={{ y: 50, opacity: 0, rotate: 0 }}
-            animate={{ y: 0, opacity: 1, rotate: 360 }}
+            initial={{ x: -200, opacity: 0, rotate: 0 }}
+            animate={{ x: 0, opacity: 1, rotate: 720 }}
             transition={{
                 delay: index * 0.2,
                 type: "spring",
