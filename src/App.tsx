@@ -15,7 +15,13 @@ const App: React.FC = () => {
   const [numbersList, setNumbersList] = useState<number[][]>([generateRandomNumbers()]);
 
   const onClickAddButton = () => {
-    setNumbersList(prevNumbersList => [...prevNumbersList, generateRandomNumbers()]);
+    let newNumbers: number[];
+    do {
+      newNumbers = generateRandomNumbers();
+      // eslint-disable-next-line no-loop-func
+    } while (numbersList.some((numbers: number[]) => JSON.stringify(numbers) === JSON.stringify(newNumbers)));
+
+    setNumbersList(prevNumbersList => [newNumbers, ...prevNumbersList]);
   };
 
   return (
@@ -26,7 +32,7 @@ const App: React.FC = () => {
         </header>
         <main>
           {numbersList.map((numbers) => (
-              <Balls numbers={numbers} />
+              <Balls key={numbers.join(':')} numbers={numbers} />
           ))}
         </main>
       </div>
