@@ -25,8 +25,8 @@ const App: React.FC = () => {
           <button onClick={onClickAddButton}>더 나와라!</button>
         </header>
         <main>
-          {numbersList.map((numbers, index) => (
-              <Balls numbers={numbers} animationKey={index} />
+          {numbersList.map((numbers) => (
+              <Balls numbers={numbers} />
           ))}
         </main>
       </div>
