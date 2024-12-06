@@ -26,7 +26,7 @@ const App: React.FC = () => {
         </header>
         <main>
           {numbersList.map((numbers, index) => (
-              <Balls key={index} numbers={numbers} animationKey={index} />
+              <Balls numbers={numbers} animationKey={index} />
           ))}
         </main>
       </div>
