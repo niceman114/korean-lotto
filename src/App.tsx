@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 import Balls from './components/Balls';
+import ReactGA from 'react-ga4';
+
+ReactGA.initialize('G-DXS3GSKWXX');
 
 const generateRandomNumbers = (): number[] => {
   const numbers = new Set<number>();
