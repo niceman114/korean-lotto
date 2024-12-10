@@ -14,6 +14,7 @@ const App: React.FC = () => {
         <header>
           <h1>대충 로또</h1>
           <div className="button-group">
+            <Link to="/" className="link-button">번호뽑기</Link>
             <a href="https://dhlottery.co.kr/gameResult.do?method=byWin"
                target="_blank"
                rel="noopener noreferrer"
