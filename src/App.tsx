@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route, Link, Navigate} from "react-router-dom";
 import './App.css';
 import ReactGA from 'react-ga4';
 import NewGame from './pages/NewGame';
+import NotFound from './pages/errors/NotFound';
 
 ReactGA.initialize('G-DXS3GSKWXX');
 
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Navigate to="/new-game" />} />
             <Route path="/new-game" element={<NewGame/>}/>
+            <Route path="*" element={<NotFound/>}/>
           </Routes>
         </main>
       </div>
