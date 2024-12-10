@@ -12,7 +12,7 @@ const App: React.FC = () => {
     <BrowserRouter>
       <div className="App">
         <header>
-          <h1>대충 로또 생성기</h1>
+          <h1>대충 로또</h1>
           <div className="button-group">
             <a href="https://dhlottery.co.kr/gameResult.do?method=byWin"
                target="_blank"
