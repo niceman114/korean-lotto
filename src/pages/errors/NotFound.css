@@ -1,0 +1,28 @@
+.not-found-title {
+    font-size: 10rem;
+    margin: 0;
+    color: #ff6f61;
+    animation: float 2s infinite ease-in-out;
+}
+
+.not-found-message {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.not-found-description {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-20px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}

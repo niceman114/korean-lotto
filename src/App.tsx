@@ -1,44 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {BrowserRouter, Routes, Route, Link, Navigate} from "react-router-dom";
 import './App.css';
-import Balls from './components/Balls';
 import ReactGA from 'react-ga4';
+import NewGame from './pages/NewGame';
+import NotFound from './pages/errors/NotFound';
 
 ReactGA.initialize('G-DXS3GSKWXX');
 
-const generateRandomNumbers = (): number[] => {
-  const numbers = new Set<number>();
-  while (numbers.size < 6) {
-    const randomNum = Math.floor(Math.random() * 45) + 1;
-    numbers.add(randomNum);
-  }
-  return Array.from(numbers);
-};
-
 const App: React.FC = () => {
-  const [numbersList, setNumbersList] = useState<number[][]>([generateRandomNumbers()]);
-
-  const onClickAddButton = () => {
-    let newNumbers: number[];
-    do {
-      newNumbers = generateRandomNumbers();
-      // eslint-disable-next-line no-loop-func
-    } while (numbersList.some((numbers: number[]) => JSON.stringify(numbers) === JSON.stringify(newNumbers)));
-
-    setNumbersList(prevNumbersList => [newNumbers, ...prevNumbersList]);
-  };
-
   return (
+    <BrowserRouter>
       <div className="App">
-        <header className="App-header">
-          <h1>대충 로또 생성기</h1>
-          <button onClick={onClickAddButton}>더 나와라!</button>
+        <header>
+          <h1>대충 로또</h1>
+          <div className="button-group">
+            <Link to="/" className="link-button">번호뽑기</Link>
+            <a href="https://dhlottery.co.kr/gameResult.do?method=byWin"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="link-button">결과확인</a>
+          </div>
         </header>
         <main>
-          {numbersList.map((numbers) => (
-              <Balls key={numbers.join(':')} numbers={numbers} />
-          ))}
+          <Routes>
+            <Route path="/" element={<Navigate to="/new-game" />} />
+            <Route path="/new-game" element={<NewGame/>}/>
+            <Route path="*" element={<NotFound/>}/>
+          </Routes>
         </main>
       </div>
+    </BrowserRouter>
   );
 };
 
