@@ -55,7 +55,9 @@ main {
   white-space: nowrap;
 }
 
-.link-button:hover {
-  background-color: #0056b3;
-  cursor: hand;
+@media (hover: hover) {
+  .link-button:hover {
+    background-color: #0056b3;
+    cursor: hand;
+  }
 }
